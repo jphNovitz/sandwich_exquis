@@ -1,0 +1,4 @@
+@startuml "General"
+[meal] -> [ingredients] : Use
+[category] -> [meal] : Group
+@enduml

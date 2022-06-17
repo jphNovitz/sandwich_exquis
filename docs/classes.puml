@@ -1,0 +1,37 @@
+@startuml "classes"
+entity Meal {
+ id : int
+ name : string
+ description : text
+ category : Category
+ ingredients : list<Ingredients>
+ created_by : string
+ updated_by : list<Author>
+ created_at : date
+ updated_at : date
+}
+
+class Category {
+ id : int
+ name : string
+ created_by : date
+ updated_at : date
+}
+
+class Ingredients {
+ id : int
+ name : string
+ category : Category
+ created_by : date
+ updated_at : date
+}
+
+class Author {
+id : int
+name : string
+}
+
+Meal "n" *--* "n" Ingredients
+Meal "n" *-- "1" Category
+Meal "1" --*  "n" Author
+@enduml
