@@ -23,11 +23,9 @@ class MenuBuilder
             ]
         ]*/);
 
-        $menu->addChild('Homejkljjk', ['route' => 'app_web_home']);
-        $menu->addChild('Homekjkljkl', ['route' => 'app_web_home']);
-        $menu->addChild('Homesq', ['route' => 'app_web_home']);
-        $menu->addChild('HomeSq', ['route' => 'app_web_home']);
-       $menu->setAttributes(['class' => 'hidden']);
+        $menu->addChild('Home', ['route' => 'app_web_home']);
+        $menu->addChild('Lorem', ['route' => 'app_web_home']);
+        $menu->addChild('Ipsum', ['route' => 'app_web_home']);
         return $menu;
     }
 }
