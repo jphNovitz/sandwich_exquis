@@ -3,8 +3,11 @@
 {% block list %}
 {% if item.hasChildren and options.depth is not same as(0) and item.displayChildren %}
     {% import _self as knp_menu %}
-
-    <ul{{ knp_menu.attributes(listAttributes) }} class="flex ">
+<div class="nav-trigger">Menu</div>
+    <ul{{ knp_menu.attributes(listAttributes) }}
+            class="
+            flex flex-col md:flex-row  [&>*]:my-4 md:[&>*]:my-0 md:[&>*]:mx-2 md:w-auto  items-center md:items-auto justify-start  md:justify-between  ">
+        {% set childrenAttributes = {'class': 'bg-red-100'} %}
         {{ block('children') }}
     </ul>
 {% endif %}

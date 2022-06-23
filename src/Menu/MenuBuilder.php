@@ -23,7 +23,7 @@ class MenuBuilder
             ]
         ]*/);
 
-        $menu->addChild('Home', ['route' => 'app_web_home']);
+        $menu->addChild('Home', ['route' => 'app_web_home'])->setLinkAttribute('class', '');
         $menu->addChild('Lorem', ['route' => 'app_web_home']);
         $menu->addChild('Ipsum', ['route' => 'app_web_home']);
         return $menu;
