@@ -3,6 +3,14 @@
 {% block title %}Hello HomeController!{% endblock %}
 
 {% block body %}
+    {% if app.request.get('_route') == 'app_web_home' %}
+        <div class="bg-hero-v md:bg-hero-h bg-cover h-screen min-h-full min-w-full  pt-0 grid place-content-center overflow-hidden">
+            <div class="bg-white rounded-full md:rounded-l-none md:rounded-r-full  w-[85vw] h-[85vw] md:w-screen md:h-[calc(100vh*1.5)] md:-ml-[calc(100vw/1.8)] py-[35%] px-[35%] md:py-[30vh] md:pl-[35vw]">
+                <h2>Lorem ipsum.</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem beatae consequatur culpa debitis dolorem dolores eius exercitationem iure ratione repellendus?</p>
+            </div>
+        </div>
+    {% endif %}
 <div class="">
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, sed?</p>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, sed?</p>
