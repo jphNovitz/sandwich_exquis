@@ -6,6 +6,7 @@ use App\Repository\MealRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation\Timestampable;
 
 #[ORM\Entity(repositoryClass: MealRepository::class)]
 class Meal
@@ -21,17 +22,28 @@ class Meal
     #[ORM\Column(type: 'text', nullable: true)]
     private $Description;
 
-    #[ORM\Column(type: 'datetime')]
+    #[ORM\Column(type: 'string'), g]
     private $created_by;
 
-    #[ORM\Column(type: 'datetime_immutable')]
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $updated_by;
+
+    #[ORM\Column(type: 'datetime_immutable'),
+        Timestampable(on: 'create')
+    ]
     private $created_at;
+
+    #[ORM\Column(type: 'datetime_immutable'),
+        Timestampable(on: 'update')]
+    private $updated_at;
 
     #[ORM\ManyToOne(targetEntity: Category::class, inversedBy: 'Meals')]
     private $category;
 
     #[ORM\OneToMany(mappedBy: 'meal', targetEntity: Ingredient::class)]
     private $Ingredients;
+
+
 
     public function __construct()
     {
@@ -67,12 +79,12 @@ class Meal
         return $this;
     }
 
-    public function getCreatedBy(): ?\DateTimeInterface
+    public function getCreatedBy(): ?string
     {
         return $this->created_by;
     }
 
-    public function setCreatedBy(\DateTimeInterface $created_by): self
+    public function setCreatedBy(string $created_by): self
     {
         $this->created_by = $created_by;
 
@@ -129,6 +141,30 @@ class Meal
                 $ingredient->setMeal(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeImmutable
+    {
+        return $this->updated_at;
+    }
+
+    public function setUpdatedAt(\DateTimeImmutable $updated_at): self
+    {
+        $this->updated_at = $updated_at;
+
+        return $this;
+    }
+
+    public function getUpdatedBy(): ?string
+    {
+        return $this->updated_by;
+    }
+
+    public function setUpdatedBy(?string $updated_by): self
+    {
+        $this->updated_by = $updated_by;
 
         return $this;
     }

@@ -1,5 +1,7 @@
 {% extends 'web/base.html.twig' %}
 
 {% block body %}
-{{ form(form) }}
+    {{ form_label(form.name, __('Name') , {'label_attr': {'class': ''}}) }}
+    {{ form_widget(form.name, {'attr': {'class': ''}}) }}
+{{ form_rest(form) }}
 {% endblock %}
