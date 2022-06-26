@@ -1,17 +1,32 @@
+{{ form_start(form) }}
 {% for child in form.children %}
     {% if child.vars.name != '_token' %}
 
         <div class="w-full flex flex-col md:flex-row px-6 py-3 md:px-12 md:py-6 gap-4">
             {{ form_label(child, null , {'label_attr': {'class': 'text-slate-500'}}) }}
-            {{ form_widget(child, {'attr': {'class':'
+            {% if ('textarea' in child.vars.block_prefixes) %}
+                {{ form_widget(child, {'attr': {'rows': '10', 'class':'
+                 px-4 px-4 focus:outline-none rounded-3xl
+                 ring-slate-100 ring-1 focus:ring-2 focus:ring-cyan-100
+                 focus:shadow-sm focus:shadow-cyan-150
+            '}}) }}
+                {{ form_errors(child, {'attr': {'class':'text-red-800 before:content["* "]'}}) }}
+            {% else %}
+                {{ form_widget(child, {'attr': {'class':'
                  px-4 px-4 focus:outline-none rounded-full
                  ring-slate-100 ring-1 focus:ring-2 focus:ring-cyan-100
                  focus:shadow-sm focus:shadow-cyan-150
             '}}) }}
-            {{ form_errors(child, {'attr': {'class':'text-red-800 before:content["* "]'}}) }}
+                {{ form_errors(child, {'attr': {'class':'text-red-800 before:content["* "]'}}) }}
+            {% endif %}
         </div>
-{#         {{ dump(child.vars.name == "_token") }}#}
-{#         {{ dump(child.vars) }}#}
+        {#         {{ dump(child.vars.name == "_token") }} #}
+
+
     {% endif %}
 {% endfor %}
 {{ form_rest(form) }}
+<div class="w-full block">
+    <input type="submit" class="px-6 py-2 bg-lime-800 text-lime-50 rounded-3xl">
+</div>
+{{ form_end(form) }}

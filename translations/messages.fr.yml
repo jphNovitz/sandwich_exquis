@@ -1,2 +1,8 @@
 form.Name: 'Nom'
 form.name: 'nom'
+form.Your.name: 'Votre Nom'
+form.your.name: 'votre Nom'
+form.Description: 'Description'
+form.description: 'description'
+form.Category: 'Categorie'
+form.category: 'categorie'
