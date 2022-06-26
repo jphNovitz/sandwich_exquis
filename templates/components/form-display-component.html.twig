@@ -1,0 +1,17 @@
+{% for child in form.children %}
+    {% if child.vars.name != '_token' %}
+
+        <div class="w-full flex flex-col md:flex-row px-6 py-3 md:px-12 md:py-6 gap-4">
+            {{ form_label(child, null , {'label_attr': {'class': 'text-slate-500'}}) }}
+            {{ form_widget(child, {'attr': {'class':'
+                 px-4 px-4 focus:outline-none rounded-full
+                 ring-slate-100 ring-1 focus:ring-2 focus:ring-cyan-100
+                 focus:shadow-sm focus:shadow-cyan-150
+            '}}) }}
+            {{ form_errors(child, {'attr': {'class':'text-red-800 before:content["* "]'}}) }}
+        </div>
+{#         {{ dump(child.vars.name == "_token") }}#}
+{#         {{ dump(child.vars) }}#}
+    {% endif %}
+{% endfor %}
+{{ form_rest(form) }}

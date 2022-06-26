@@ -14,7 +14,7 @@ class MealType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name', TextType::class)
+            ->add('name', TextType::class, ['label' => 'form.Name'])
             ->add('Description', TextType::class)
             ->add('created_by', TextType::class)
             ->add('updated_by', TextType::class)
@@ -32,9 +32,6 @@ class MealType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $this->setWidgets(array(
-            'name'  => new sfWidgetFormInputText(),
-        ));
             $resolver->setDefaults([
             'data_class' => Meal::class,
         ]);
